@@ -102,8 +102,46 @@ public class Colosseum {
      * (Look, we can return objects too!)
      */
     public static Pokemon buildPokemon() {
-        Pokemon returnPokemon = null;
-        return returnPokemon;
+        System.out.println("Please name your Pokemon");
+        String name = myScan.next();
+        System.out.println("How many hit points? (1-50)");
+        int hitPoints = myScan.nextInt();
+        while (hitPoints < 1 || hitPoints > MAX_HIT_POINTS) {
+            System.out.println("Sorry HP must be between 1 and 50");
+            hitPoints = myScan.nextInt();
+        }
+        System.out.println("Split fifty points between attack and defense");
+        int attackLevel = myScan.nextInt();
+        while (attackLevel < 1 || attackLevel > MAX_HIT_POINTS - 1) {
+            System.out.println("Sorry attack must be between 1 and 50");
+            attackLevel = myScan.nextInt();
+        }
+        System.out.println("Enter defense level");
+        int defenseLevel = myScan.nextInt();
+        while (defenseLevel < 1 || defenseLevel > MAX_HIT_POINTS - attackLevel) {
+            System.out.println("Sorry defense must be between 1 and " + (MAX_HIT_POINTS - attackLevel));
+            defenseLevel = myScan.nextInt();
+        }
+        System.out.println("Select from the following Pokemon types:");
+        System.out.println("1 - Electric Pokemon");
+        System.out.println("2 - Fire Pokemon");
+        System.out.println("3 - Water Pokemon");
+        int typeNumber = myScan.nextInt();
+        while (typeNumber < 1 || typeNumber  > 3) {
+            System.out.println("Sorry, you must pick either 1, 2, or 3.");
+            typeNumber = myScan.nextInt();
+        }
+        if (typeNumber == 1) {
+            Pokemon tempPokemon = new ElectricPokemon(hitPoints, attackLevel, defenseLevel, name);
+            return tempPokemon;
+        } else if (typeNumber == 2) {
+            Pokemon tempPokemon = new FirePokemon(hitPoints, attackLevel, defenseLevel, name);
+            return tempPokemon;
+        } else if (typeNumber == 3) {
+            Pokemon tempPokemon = new WaterPokemon(hitPoints, attackLevel, defenseLevel, name);
+            return tempPokemon;
+        }
+        return null;
     }
 
     /**

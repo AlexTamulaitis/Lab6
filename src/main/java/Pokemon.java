@@ -94,6 +94,24 @@ public class Pokemon {
     }
 
     /**
+     *
+     * @param setHitpoints eo
+     * @param setAttackLevel ef
+     * @param setDefenseLevel eg
+     * @param setName eg
+     */
+    public Pokemon(final int setHitpoints, final int setAttackLevel, final int setDefenseLevel, final String setName) {
+        final int d6num = 6;
+        final int d20num = 20;
+        this.d6 = new Dice(d6num);
+        this.d20 = new Dice(d20num);
+        this.hitPoints = setHitpoints;
+        this.attackLevel = setAttackLevel;
+        this.defenseLevel = setDefenseLevel;
+        this.name = setName;
+    }
+
+    /**
      * Get the attack level of the pokemon.
      * @return attackLevel the attack level of the pokemon
      */
